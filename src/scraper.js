@@ -39,7 +39,7 @@ function startScraping() {
          url: constants.urls.peoplesearch,
          query: {
            count: 10,
-           guides: "List(v->PEOPLE,facetNetwork->S|O)",
+           guides: "List(v->PEOPLE,facetNetwork->S|O, facetGeoRegion->105015875)",
            keywords: keyword,
            origin: 'FACETED_SEARCH',
            q: 'guided',

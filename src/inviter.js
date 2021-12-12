@@ -16,11 +16,18 @@ function invite(sessionCookies, invitees) {
   return new Promise((resolve) => {
     (function func() {
       if (idx < invitees.length) {
-        makeReqInvitationsPOST(sessionCookies, invitees[idx])
-         .then(() => {
-           func();
-         });
-        idx++;
+        const regex = new RegExp('tech recruiter', 'i');
+        console.log(invitees[idx].occupation + ' is Tech Recruiter ? : ' + regex.test(invitees[idx].occupation));
+        if (regex.test(invitees[idx].occupation)) {
+          makeReqInvitationsPOST(sessionCookies, invitees[idx])
+          .then(() => {
+            idx++;
+            func();
+          });
+        } else {
+          idx++;
+          func();
+        }
       } else {
         resolve();
       }
@@ -34,6 +41,7 @@ function makeReqInvitationsPOST(cookies, invitee) {
   const invitationsData = JSON.stringify({
     excludeInvitations: [],
     invitations: [],
+    message: "👋 Salut ! Je suis un 𝙙𝙚́𝙫𝙚𝙡𝙤𝙥𝙥𝙚𝙪𝙧 𝙬𝙚𝙗 / 𝙢𝙤𝙗𝙞𝙡𝙚 𝘼𝙣𝙜𝙪𝙡𝙖𝙧 utilisant aussi Node.js et Amazon Cloud depuis 2 ans. Je suis en ce moment à la recherche d'une mission 𝙁𝙧𝙚𝙚𝙡𝙖𝙣𝙘𝙚 en 𝙁𝙪𝙡𝙡 𝙍𝙚𝙢𝙤𝙩𝙚, et je voulais savoir si tu avais quelque chose à me proposer ? ",
     trackingId: invitee.trackingId,
     invitee: {
       'com.linkedin.voyager.growth.invitation.InviteeProfile': {

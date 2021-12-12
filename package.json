@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"build": "babel src -d lib",
-		"start": "node src/cli.js -u muhammadnuman70@gmail.com"
+		"start": "node src/cli.js -u t.trigaut@gmail.com"
 	},
 	"repository": {
 		"type": "git",
